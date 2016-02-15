@@ -1,28 +1,30 @@
-== README
+#Sample - Rails API
+...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Setup
+```
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed
+rails s
+```
 
-Things you may want to cover:
+##Consuming the API
 
-* Ruby version
+####Signup - users#create
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"user": {"username": "testuser", "email": "tests@example.com", "password": "12341234", "password_confirmation": "12341234"}}' http://localhost:3000/v1/users
 
-* System dependencies
+>> {"email":"email@example.com","username":"Your Name","token_type":"Bearer","user_id":2,"access_token":"2:cccyXLZ7o_XpK6MxU_Bt"}
+```
 
-* Configuration
+####Login - sessions#create
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com", "password": "12341234"}' http://localhost:3000/v1/login
 
-* Database creation
+>> {"email":"test@example.com","username":"testuser","token_type":"Bearer","user_id":12,"access_token":"12:cccyXLZ7o_XpK6MxU_Bt"}
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+####Get Users - users#index
+curl -X GET -H "Content-type: application/json" -H "Aution: 1:F8ANpLpQzhs2mEUviv8y" http://localhost:3000/v1/users
