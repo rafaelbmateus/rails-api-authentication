@@ -26,6 +26,8 @@ curl -X POST -H "Content-Type: application/json" -d '{"email": "test@example.com
 ```
 
 ####Get Users - users#index
+```bash
 curl -X GET -H "Content-type: application/json" -H "Aution: 1:F8ANpLpQzhs2mEUviv8y" http://localhost:3000/v1/users
 
 <a href="https://github.com/FancyPixel/small-rails">Source</a>
+```
